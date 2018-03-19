@@ -149,7 +149,7 @@ gmap-map {
 </style>
 
 <script>
-const _ = require('lodash');
+var _ = require('lodash');
 
 export default {
   data: function data() {
@@ -371,7 +371,7 @@ export default {
       console.log('map clicked', mouseArgs); // eslint-disable-line no-console
     },
     mapRclicked(mouseArgs) {
-      const createdMarker = this.addMarker();
+      var createdMarker = this.addMarker();
       createdMarker.position.lat = mouseArgs.latLng.lat();
       createdMarker.position.lng = mouseArgs.latLng.lng();
     },

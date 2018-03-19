@@ -8,7 +8,7 @@ export var lab = Lab.script()
 global.document = jsdom('')
 global.window = document.defaultView
 
-const VueRoot = require('vue/dist/vue')
+var VueRoot = require('vue/dist/vue')
 
 lab.experiment('Deferred Ready', function () {
   var Vue

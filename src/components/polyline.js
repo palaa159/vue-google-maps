@@ -6,7 +6,7 @@ import propsBinder from '../utils/propsBinder.js'
 import MapElementMixin from './mapElementMixin'
 import getPropsValuesMixin from '../utils/getPropsValuesMixin.js'
 
-const props = {
+var props = {
   draggable: {
     type: Boolean
   },
@@ -27,7 +27,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'click',
   'dblclick',
   'drag',
@@ -54,7 +54,7 @@ export default {
   },
 
   deferredReady () {
-    const options = clone(this.getPropsValues())
+    var options = clone(this.getPropsValues())
     delete options.options
     Object.assign(options, this.options)
     this.$polylineObject = new google.maps.Polyline(options)
@@ -71,10 +71,10 @@ export default {
 
         this.$polylineObject.setPath(path)
 
-        const mvcPath = this.$polylineObject.getPath()
-        const eventListeners = []
+        var mvcPath = this.$polylineObject.getPath()
+        var eventListeners = []
 
-        const updatePaths = () => {
+        var updatePaths = () => {
           this.$emit('path_changed', this.$polylineObject.getPath())
         }
 

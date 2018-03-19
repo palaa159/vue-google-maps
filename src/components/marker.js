@@ -4,7 +4,7 @@ import propsBinder from '../utils/propsBinder.js'
 import getPropsValuesMixin from '../utils/getPropsValuesMixin.js'
 import MapElementMixin from './mapElementMixin'
 
-const props = {
+var props = {
   animation: {
     twoWay: true,
     type: Number
@@ -63,7 +63,7 @@ const props = {
   },
 }
 
-const events = [
+var events = [
   'click',
   'rightclick',
   'dblclick',
@@ -116,7 +116,7 @@ export default {
   },
 
   deferredReady () {
-    const options = mapValues(props, (value, prop) => this[prop])
+    var options = mapValues(props, (value, prop) => this[prop])
     options.map = this.$map
     delete options.options
     Object.assign(options, this.options)

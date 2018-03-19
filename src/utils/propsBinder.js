@@ -10,10 +10,10 @@ export default (vueElement, googleMapsElement, props, options) => {
   options = options || {}
   var {afterModelChanged} = options
   forIn(props, ({twoWay, type, trackProperties}, attribute) => {
-    const setMethodName = 'set' + capitalizeFirstLetter(attribute)
-    const getMethodName = 'get' + capitalizeFirstLetter(attribute)
-    const eventName = attribute.toLowerCase() + '_changed'
-    const initialValue = vueElement[attribute]
+    var setMethodName = 'set' + capitalizeFirstLetter(attribute)
+    var getMethodName = 'get' + capitalizeFirstLetter(attribute)
+    var eventName = attribute.toLowerCase() + '_changed'
+    var initialValue = vueElement[attribute]
 
     if (typeof googleMapsElement[setMethodName] === 'undefined') {
       throw new Error(`${setMethodName} is not a method of (the Maps object corresponding to) ${vueElement.$options._componentTag}`)
@@ -26,7 +26,7 @@ export default (vueElement, googleMapsElement, props, options) => {
     if (type !== Object || !trackProperties) {
       // Track the object deeply
       vueElement.$watch(attribute, () => {
-        const attributeValue = vueElement[attribute]
+        var attributeValue = vueElement[attribute]
 
         timesSet++
         googleMapsElement[setMethodName](attributeValue)
@@ -44,15 +44,15 @@ export default (vueElement, googleMapsElement, props, options) => {
       let tick = 0
       let expectedTick = 0
 
-      const raiseExpectation = () => {
+      var raiseExpectation = () => {
         expectedTick += 1
       }
 
-      const updateTick = () => {
+      var updateTick = () => {
         tick = Math.max(expectedTick, tick + 1)
       }
 
-      const respondToChange = () => {
+      var respondToChange = () => {
         if (tick < expectedTick) {
           googleMapsElement[setMethodName](vueElement[attribute])
 

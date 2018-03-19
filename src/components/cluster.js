@@ -14,7 +14,7 @@ import MapElementMixin from './mapElementMixin'
 import getPropsValuesMixin from '../utils/getPropsValuesMixin.js'
 import MarkerClusterer from 'marker-clusterer-plus'
 
-const props = {
+var props = {
   maxZoom: {
     type: Number,
     twoWay: false
@@ -37,7 +37,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'click',
   'rightclick',
   'dblclick',
@@ -63,7 +63,7 @@ export default {
   },
 
   deferredReady () {
-    const options = clone(this.getPropsValues())
+    var options = clone(this.getPropsValues())
 
     if (typeof MarkerClusterer === 'undefined') {
       /* eslint-disable no-console */
@@ -75,7 +75,7 @@ export default {
 
     propsBinder(this, this.$clusterObject, props, {
       afterModelChanged: (a, v) => { // eslint-disable-line no-unused-vars
-        const oldMarkers = this.$clusterObject.getMarkers()
+        var oldMarkers = this.$clusterObject.getMarkers()
         this.$clusterObject.clearMarkers()
         this.$clusterObject.addMarkers(oldMarkers)
       }

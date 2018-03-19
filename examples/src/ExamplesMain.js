@@ -16,7 +16,7 @@ Vue.use(VueGoogleMaps, {
 });
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+var router = new VueRouter({
   routes: Examples.map(e => ({
     path: `/${e.name}`,
     component: ExamplePage,

@@ -4,7 +4,7 @@ import propsBinder from '../utils/propsBinder.js'
 import eventsBinder from '../utils/eventsBinder.js'
 import MapElementMixin from './mapElementMixin'
 
-const props = {
+var props = {
   options: {
     type: Object,
     required: false,
@@ -26,7 +26,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'domready',
   'closeclick',
   'content_changed',
@@ -38,7 +38,7 @@ export default {
   props: props,
 
   mounted () {
-    const el = this.$refs.flyaway
+    var el = this.$refs.flyaway
     el.parentNode.removeChild(el)
   },
 
@@ -78,7 +78,7 @@ export default {
 
     createInfoWindow () {
       // setting options
-      const options = clone(this.options)
+      var options = clone(this.options)
       options.content = this.$refs.flyaway
 
       // only set the position if the info window is not bound to a marker

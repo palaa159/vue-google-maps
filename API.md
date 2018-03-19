@@ -290,7 +290,7 @@ $ npm install vue2-google-maps
 Import the components you need:
 
 ```js
-const VueGoogleMaps = require('vue2-google-maps');
+var VueGoogleMaps = require('vue2-google-maps');
 
 Vue.use(VueGoogleMaps, {
   load: {

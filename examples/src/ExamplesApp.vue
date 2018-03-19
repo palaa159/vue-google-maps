@@ -59,8 +59,8 @@
 import Examples from '../examples-index'
 
 /* A list of examples, and their source codes */
-const ExamplesWithoutOrdering = Examples.map((ex) => {
-  const nameWithoutOrdering = ex.name.replace(/^[0-9]*/, '')
+var ExamplesWithoutOrdering = Examples.map((ex) => {
+  var nameWithoutOrdering = ex.name.replace(/^[0-9]*/, '')
 
   return {
     ...ex,
@@ -68,7 +68,7 @@ const ExamplesWithoutOrdering = Examples.map((ex) => {
   }
 })
 
-const ExamplesByName = ExamplesWithoutOrdering.reduce(
+var ExamplesByName = ExamplesWithoutOrdering.reduce(
   (all, example) => {
     all[example.name] = example
     return all

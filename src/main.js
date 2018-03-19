@@ -29,7 +29,7 @@ export function install (Vue, options) {
 
   Vue.use(DeferredReady)
 
-  const defaultResizeBus = new Vue()
+  var defaultResizeBus = new Vue()
   Vue.$gmapDefaultResizeBus = defaultResizeBus
   Vue.mixin({
     created () {

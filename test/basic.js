@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import {getPage, loadFile} from './test-setup/test-common'
 
-export const lab = Lab.script()
+export var lab = Lab.script()
 
 lab.experiment('Basic tests', {timeout: 15000}, function () {
   let page = null
@@ -30,7 +30,7 @@ lab.experiment('Basic tests', {timeout: 15000}, function () {
 
   lab.test('Maps API is loaded', async function () {
     await loadPage()
-    const vue = await mountVue()
+    var vue = await mountVue()
 
     assert(await page.evaluate(() =>
       VueGoogleMaps.loaded.then(() => !!google.maps)),
@@ -52,14 +52,14 @@ lab.experiment('Basic tests', {timeout: 15000}, function () {
 
   lab.test('Panning of map works', {timeout: 30000}, async function () {
     await loadPage()
-    const vue = await mountVue()
+    var vue = await mountVue()
 
-    const [top, right, bottom, left] = await page.evaluate(() => {
-      const el = document.querySelector('.map-container')
-      const top = el.offsetTop
-      const right = el.offsetLeft + el.offsetWidth
-      const bottom = el.offsetTop + el.offsetHeight
-      const left = el.offsetLeft
+    var [top, right, bottom, left] = await page.evaluate(() => {
+      var el = document.querySelector('.map-container')
+      var top = el.offsetTop
+      var right = el.offsetLeft + el.offsetWidth
+      var bottom = el.offsetTop + el.offsetHeight
+      var left = el.offsetLeft
 
       return [top, right, bottom, left]
     })
@@ -77,8 +77,8 @@ lab.experiment('Basic tests', {timeout: 15000}, function () {
     await new Promise(resolve => setTimeout(resolve, 100))
     await page.mouse.up()
 
-    const {lat, lng} = await page.evaluate((vue) => {
-      const c = vue.$refs.map.$mapObject.getCenter()
+    var {lat, lng} = await page.evaluate((vue) => {
+      var c = vue.$refs.map.$mapObject.getCenter()
       return {lat: c.lat(), lng: c.lng()}
     }, vue)
     assert(lat > 1.45, 'Lat greater than 1.45')
@@ -86,7 +86,7 @@ lab.experiment('Basic tests', {timeout: 15000}, function () {
   })
 
   lab.test('Lodash library is not bloating up the library', async () => {
-    const libraryOutput = fs.readFileSync(
+    var libraryOutput = fs.readFileSync(
       path.join(__dirname, '../dist/vue-google-maps.js'),
       'utf-8'
     )

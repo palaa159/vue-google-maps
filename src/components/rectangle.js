@@ -5,7 +5,7 @@ import propsBinder from '../utils/propsBinder.js'
 import MapElementMixin from './mapElementMixin'
 import getPropsValuesMixin from '../utils/getPropsValuesMixin.js'
 
-const props = {
+var props = {
   bounds: {
     type: Object,
     twoWay: true
@@ -24,7 +24,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'click',
   'dblclick',
   'drag',
@@ -47,7 +47,7 @@ export default {
   },
 
   deferredReady () {
-    const options = clone(this.getPropsValues())
+    var options = clone(this.getPropsValues())
     options.map = this.$map
     this.createRectangle(options)
   },

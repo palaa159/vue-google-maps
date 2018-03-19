@@ -28,7 +28,7 @@ export default {
   watch: {
     markers(markers) {
       if (markers.length > 2) {
-        const bounds = new google.maps.LatLngBounds()
+        var bounds = new google.maps.LatLngBounds()
         for (let m of markers) {
           bounds.extend(m.latLng)
         }
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     generate() {
-      const spread = Math.random() + 0.001
+      var spread = Math.random() + 0.001
 
       this.center = {
         lat: 1.38 + (Math.random() - 0.5) * spread,

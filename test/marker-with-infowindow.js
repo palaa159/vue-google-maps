@@ -2,7 +2,7 @@ import Lab from 'lab'
 import assert from 'assert'
 import {getPage, loadFile} from './test-setup/test-common'
 
-export const lab = Lab.script()
+export var lab = Lab.script()
 
 lab.experiment('Basic tests', {timeout: 15000}, function () {
   let page = null
@@ -43,8 +43,8 @@ lab.experiment('Basic tests', {timeout: 15000}, function () {
     'marker is not clicked')
 
     // Obtain the center
-    const [x, y] = await page.evaluate(() => {
-      const el = window.theVue.$refs.map.$el
+    var [x, y] = await page.evaluate(() => {
+      var el = window.theVue.$refs.map.$el
 
       return Promise.resolve([
         el.offsetLeft + 0.5 * el.offsetWidth,

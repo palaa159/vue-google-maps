@@ -2,7 +2,7 @@
 
 var setUp = false
 
-export const loaded = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
+export var loaded = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
   if (typeof window === 'undefined') {
     // Do nothing if run from server-side
     return
@@ -38,13 +38,13 @@ export const loaded = new Promise((resolve, reject) => { // eslint-disable-line 
  *      })
  * ```
  */
-export const load = (apiKey, version, libraries, loadCn) => {
+export var load = (apiKey, version, libraries, loadCn) => {
   if (typeof document === 'undefined') {
     // Do nothing if run from server-side
     return
   }
   if (!setUp) {
-    const googleMapScript = document.createElement('SCRIPT')
+    var googleMapScript = document.createElement('SCRIPT')
 
     // Allow apiKey to be an object.
     // This is to support more esoteric means of loading Google Maps,

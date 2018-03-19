@@ -8,7 +8,7 @@ import {
   loaded
 } from '../manager.js'
 
-const props = {
+var props = {
   bounds: {
     type: Object
   },
@@ -44,7 +44,7 @@ export default {
 
   mounted () {
     loaded.then(() => {
-      const options = clone(this.getPropsValues())
+      var options = clone(this.getPropsValues())
       if (this.selectFirstOnEnter) {
         downArrowSimulator(this.$refs.input)
       }
@@ -54,7 +54,7 @@ export default {
       }
 
       /* eslint-disable no-unused-vars */
-      const finalOptions = pickBy(Object.assign(
+      var finalOptions = pickBy(Object.assign(
         {},
         omit(options, ['options', 'selectFirstOnEnter', 'value', 'place', 'placeholder']),
         options.options

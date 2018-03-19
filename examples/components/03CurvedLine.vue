@@ -34,18 +34,18 @@ export default {
       if (this.start && this.end) {
         return range(100)
           .map(i => {
-            const tick = i / 99
+            var tick = i / 99
 
             /* Bezier curve -- set up the control points */
-            const dlat = this.end.latLng.lat() - this.start.latLng.lat()
-            const dlng = this.end.latLng.lng() - this.start.latLng.lng()
+            var dlat = this.end.latLng.lat() - this.start.latLng.lat()
+            var dlng = this.end.latLng.lng() - this.start.latLng.lng()
 
-            const cp1 = {
+            var cp1 = {
               lat: this.start.latLng.lat() + 0.33 * dlat + 0.33 * dlng,
               lng: this.start.latLng.lng() - 0.33 * dlat + 0.33 * dlng,
             }
 
-            const cp2 = {
+            var cp2 = {
               lat: this.end.latLng.lat() - 0.33 * dlat + 0.33 * dlng,
               lng: this.end.latLng.lng() - 0.33 * dlat - 0.33 * dlng,
             }

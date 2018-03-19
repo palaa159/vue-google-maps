@@ -10,7 +10,7 @@ import mountableMixin from '../utils/mountableMixin.js'
 
 import TwoWayBindingWrapper from '../utils/TwoWayBindingWrapper.js'
 
-const props = {
+var props = {
   center: {
     required: true,
     twoWay: true,
@@ -43,7 +43,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'click',
   'dblclick',
   'drag',
@@ -59,7 +59,7 @@ const events = [
 ]
 
 // Plain Google Maps methods exposed here for convenience
-const linkedMethods = [
+var linkedMethods = [
   'panBy',
   'panTo',
   'panToBounds',
@@ -72,7 +72,7 @@ const linkedMethods = [
 }, {})
 
 // Other convenience methods exposed by Vue Google Maps
-const customMethods = {
+var customMethods = {
   resize () {
     if (this.$mapObject) {
       google.maps.event.trigger(this.$mapObject, 'resize')
@@ -81,7 +81,7 @@ const customMethods = {
   resizePreserveCenter () {
     if (!this.$mapObject) { return }
 
-    const oldCenter = this.$mapObject.getCenter()
+    var oldCenter = this.$mapObject.getCenter()
     google.maps.event.trigger(this.$mapObject, 'resize')
     this.$mapObject.setCenter(oldCenter)
   },
@@ -95,7 +95,7 @@ const customMethods = {
 }
 
 // Methods is a combination of customMethods and linkedMethods
-const methods = Object.assign({}, customMethods, linkedMethods)
+var methods = Object.assign({}, customMethods, linkedMethods)
 
 export default {
   mixins: [getPropsMixin, DeferredReadyMixin, mountableMixin],
@@ -133,12 +133,12 @@ export default {
   deferredReady () {
     return loaded.then(() => {
       // getting the DOM element where to create the map
-      const element = this.$refs['vue-map']
+      var element = this.$refs['vue-map']
 
       // creating the map
-      const copiedData = clone(this.getPropsValues())
+      var copiedData = clone(this.getPropsValues())
       delete copiedData.options
-      const options = clone(this.options)
+      var options = clone(this.options)
       Object.assign(options, copiedData)
       this.$mapObject = new google.maps.Map(element, options)
 
@@ -154,7 +154,7 @@ export default {
           decrement()
         })
 
-        const updateCenter = () => {
+        var updateCenter = () => {
           increment()
           this.$mapObject.setCenter(this.finalLatLng)
         }

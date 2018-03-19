@@ -7,7 +7,7 @@ import {
   loaded
 } from '../manager.js'
 
-const props = {
+var props = {
   bounds: {
     type: Object,
   },
@@ -49,7 +49,7 @@ export default {
   mixins: [getPropsValuesMixin],
 
   mounted () {
-    const input = this.$refs.input
+    var input = this.$refs.input
 
     // Allow default place to be set
     input.value = this.defaultPlace
@@ -58,7 +58,7 @@ export default {
     })
 
     loaded.then(() => {
-      const options = clone(this.getPropsValues())
+      var options = clone(this.getPropsValues())
       if (this.selectFirstOnEnter) {
         downArrowSimulator(this.$refs.input)
       }

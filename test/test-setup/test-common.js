@@ -2,7 +2,7 @@ import Puppeteer from 'puppeteer'
 import CompileStandalone from './compile-standalone'
 import path from 'path'
 
-const puppeteerPromise = CompileStandalone.then(() => {
+var puppeteerPromise = CompileStandalone.then(() => {
   let options = {}
 
   if (process.env['THIS_IS_ON_TRAVIS_AND_SANDBOX_IS_NOT_ALLOWED'] === 'true') {

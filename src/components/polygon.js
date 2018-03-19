@@ -6,7 +6,7 @@ import propsBinder from '../utils/propsBinder.js'
 import MapElementMixin from './mapElementMixin'
 import getPropsValuesMixin from '../utils/getPropsValuesMixin.js'
 
-const props = {
+var props = {
   draggable: {
     type: Boolean
   },
@@ -30,7 +30,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'click',
   'dblclick',
   'drag',
@@ -57,7 +57,7 @@ export default {
   },
 
   deferredReady () {
-    const options = clone(this.getPropsValues())
+    var options = clone(this.getPropsValues())
     delete options.options
     Object.assign(options, this.options)
     if (!options.path) {
@@ -81,12 +81,12 @@ export default {
 
         this.$polygonObject.setPaths(paths)
 
-        const updatePaths = () => {
+        var updatePaths = () => {
           this.$emit('paths_changed', this.$polygonObject.getPaths())
         }
-        const eventListeners = []
+        var eventListeners = []
 
-        const mvcArray = this.$polygonObject.getPaths()
+        var mvcArray = this.$polygonObject.getPaths()
         for (let i = 0; i < mvcArray.getLength(); i++) {
           let mvcPath = mvcArray.getAt(i)
           eventListeners.push([mvcPath, mvcPath.addListener('insert_at', updatePaths)])
@@ -113,10 +113,10 @@ export default {
 
         this.$polygonObject.setPaths(path)
 
-        const mvcPath = this.$polygonObject.getPath()
-        const eventListeners = []
+        var mvcPath = this.$polygonObject.getPath()
+        var eventListeners = []
 
-        const updatePaths = () => {
+        var updatePaths = () => {
           this.$emit('path_changed', this.$polygonObject.getPath())
         }
 

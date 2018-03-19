@@ -9,7 +9,7 @@ import mountableMixin from '../utils/mountableMixin.js'
 
 import TwoWayBindingWrapper from '../utils/TwoWayBindingWrapper.js'
 
-const props = {
+var props = {
   zoom: {
     twoWay: true,
     type: Number
@@ -43,13 +43,13 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'closeclick',
   'status_changed',
 ]
 
 // Other convenience methods exposed by Vue Google Maps
-const customMethods = {
+var customMethods = {
   resize () {
     if (this.$panoObject) {
       google.maps.event.trigger(this.$panoObject, 'resize')
@@ -58,7 +58,7 @@ const customMethods = {
 }
 
 // Methods is a combination of customMethods and linkedMethods
-const methods = Object.assign({}, customMethods)
+var methods = Object.assign({}, customMethods)
 
 export default {
   mixins: [getPropsMixin, DeferredReadyMixin, mountableMixin],
@@ -71,7 +71,7 @@ export default {
       this.$panoCreatedDeferred = {resolve, reject}
     })
 
-    const updateCenter = () => {
+    var updateCenter = () => {
       if (!this.panoObject) return
 
       this.$panoObject.setPosition({
@@ -111,10 +111,10 @@ export default {
   deferredReady () {
     return loaded.then(() => {
       // getting the DOM element where to create the map
-      const element = this.$refs['vue-street-view-pano']
+      var element = this.$refs['vue-street-view-pano']
 
       // creating the map
-      const options = Object.assign({},
+      var options = Object.assign({},
         this.options,
         omit(this.getPropsValues(), ['options'])
       )

@@ -5,7 +5,7 @@ import propsBinder from '../utils/propsBinder.js'
 import MapElementMixin from './mapElementMixin'
 import getPropsValuesMixin from '../utils/getPropsValuesMixin.js'
 
-const props = {
+var props = {
   center: {
     type: Object,
     twoWay: true,
@@ -30,7 +30,7 @@ const props = {
   }
 }
 
-const events = [
+var events = [
   'click',
   'dblclick',
   'drag',
@@ -52,7 +52,7 @@ export default {
   render () { return '' },
 
   deferredReady () {
-    const options = clone(this.getPropsValues())
+    var options = clone(this.getPropsValues())
     options.map = this.$map
     delete options.bounds
     this.createCircle(options)
@@ -63,12 +63,12 @@ export default {
       this.$circleObject = new google.maps.Circle(options)
       // we cant bind bounds because there is no `setBounds` method
       // on the Circle object
-      const boundProps = clone(props)
+      var boundProps = clone(props)
       delete boundProps.bounds
       propsBinder(this, this.$circleObject, boundProps)
       eventBinder(this, this.$circleObject, events)
 
-      const updateBounds = () => {
+      var updateBounds = () => {
         this.$emit('bounds_changed', this.$circleObject.getBounds())
       }
 
